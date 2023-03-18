@@ -1,0 +1,56 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400;500;700;900&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+	.datatable-header {
+		@apply flex flex-col md:flex-row justify-between items-center gap-2 mb-2;
+	}
+	.datatable-header-input {
+		@apply border border-gray-400 rounded-md px-2 py-1 text-sm focus:outline-none focus:border-gray-600 shadow-sm;
+	}
+	.table-container-responsive {
+		@apply overflow-x-auto rounded shadow-lg;
+	}
+	.datatable-table {
+		@apply min-w-full table-fixed;
+	}
+	.datatable-table-thead-tr {
+		@apply bg-gray-100 border-b border-gray-300;
+	}
+	.datatable-table-thead-th {
+		@apply px-3 py-2 text-left;
+	}
+	.datatable-table-tbody {
+		@apply text-gray-700;
+	}
+	.datatable-table-tbody-tr {
+		@apply border-b transition duration-300 ease-in-out hover:bg-neutral-100;
+	}
+	.datatable-table-tbody-td {
+		@apply px-3 py-1;
+	}
+	.datatable-pagination {
+		@apply flex justify-center mt-4;
+	}
+	.table-btn-previous {
+		@apply px-2 ml-0 text-gray-500 bg-white border border-gray-400 rounded-l-lg hover:bg-gray-500 hover:text-gray-200 focus:outline-none cursor-pointer drop-shadow-md;
+	}
+	.table-btn-next {
+		@apply px-2 ml-0 text-gray-500 bg-white border border-gray-400 rounded-r-lg hover:bg-gray-500 hover:text-gray-200 focus:outline-none cursor-pointer drop-shadow-md;
+	}
+	.table-btn-points {
+		@apply px-2 ml-0 text-gray-500 bg-white border border-gray-400 drop-shadow-md;
+	}
+	.table-btn-number {
+		@apply px-2 ml-0 text-gray-500 bg-white border border-gray-400 hover:bg-gray-500 hover:text-gray-200 focus:outline-none cursor-pointer drop-shadow-md;
+	}
+}
+
+.table-btn-number.active {
+	background-color: rgb(107 114 128);
+	color: rgb(229 231 235);
+	cursor: default;
+}

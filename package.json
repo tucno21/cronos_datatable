@@ -1,0 +1,13 @@
+{
+	"devDependencies": {
+		"tailwindcss": "^3.2.7"
+	},
+	"scripts": {
+		"dev": "concurrently \"npx tailwindcss -i ./src/tailwindcss.css -o ./public/assets/cronos.datatable.css --watch\" \"live-server ./public --port=8090\""
+	},
+	"dependencies": {
+		"concurrently": "^7.6.0",
+		"http-server": "^14.1.1",
+		"live-server": "^1.2.2"
+	}
+}
