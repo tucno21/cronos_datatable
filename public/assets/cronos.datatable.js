@@ -17,6 +17,12 @@ class DataTable {
 	}
 
 	init() {
+		if (this.container.querySelector(".datatable-header")) {
+			this.container.querySelector(".datatable-header").remove();
+		}
+		if (this.container.querySelector(".datatable-table")) {
+			this.container.querySelector(".datatable-table").remove();
+		}
 		this.renderHeader();
 		this.renderTable();
 		this.render();
@@ -58,7 +64,6 @@ class DataTable {
 	}
 
 	renderTable() {
-		//table
 		const table = document.createElement("table");
 		table.classList.add("datatable-table");
 
@@ -72,21 +77,23 @@ class DataTable {
 			th.innerText = this.headers[key];
 			th.dataset.key = key;
 			th.classList.add("datatable-table-thead-th");
-			th.addEventListener("click", () => {
-				if (this.sortedBy === key) {
-					this.sortedAsc = !this.sortedAsc;
-				} else {
-					this.sortedBy = key;
-					this.sortedAsc = true;
-				}
-				const table = this.container.querySelector("table");
-				for (const header of table.querySelectorAll("th")) {
-					header.innerText = this.headers[header.dataset.key];
-				}
-				const arrow = this.sortedAsc ? "↑" : "↓";
-				th.innerText += ` ${arrow}`;
-				this.render();
-			});
+			if (key !== "action" && key !== "actions") {
+				th.addEventListener("click", () => {
+					if (this.sortedBy === key) {
+						this.sortedAsc = !this.sortedAsc;
+					} else {
+						this.sortedBy = key;
+						this.sortedAsc = true;
+					}
+					const table = this.container.querySelector("table");
+					for (const header of table.querySelectorAll("th")) {
+						header.innerText = this.headers[header.dataset.key];
+					}
+					const arrow = this.sortedAsc ? "↑" : "↓";
+					th.innerText += ` ${arrow}`;
+					this.render();
+				});
+			}
 			tr.append(th);
 		}
 
